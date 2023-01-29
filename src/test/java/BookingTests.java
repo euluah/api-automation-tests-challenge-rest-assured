@@ -97,5 +97,21 @@ public class BookingTests {
 
 
     }
+    
+    @Test
+    public void getgetAllBookingsByLastname() {
+    	request
+        .when()
+            .queryParam("lastname", "Brown")
+            .get("/booking")
+        .then()
+            .assertThat()
+            .statusCode(200)
+            .contentType(ContentType.JSON)
+        .and()
+        .body("results", hasSize(greaterThan(0)));
+    	
+    	System.out.print("Entrei aqui");
+    }
 
 }
